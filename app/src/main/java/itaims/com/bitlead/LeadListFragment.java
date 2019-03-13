@@ -42,7 +42,6 @@ public class LeadListFragment extends Fragment
         return view;
     }
 
-
     // Add Fragments to Tabs
     private void setupViewPager(ViewPager viewPager)
     {

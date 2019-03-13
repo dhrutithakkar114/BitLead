@@ -17,7 +17,8 @@ public class Login extends AppCompatActivity {
     TextView t1;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
 

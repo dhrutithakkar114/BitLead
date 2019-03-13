@@ -34,7 +34,7 @@ public class UpdatePass extends Activity
         Log.d("Start validation","hi");
         if (et1.length() > 25 || et2.length() > 25)
         {
-            Toast.makeText(getApplicationContext(), "pls enter less the 25 character", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "pls enter less then 25 character", Toast.LENGTH_SHORT).show();
             return true;
         }
         else if (et1.length() == 0 || et2.length() == 0)

@@ -21,16 +21,15 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         Fragment fragment = new HomeFragment();
 
-        FragmentManager fragmentManager=getSupportFragmentManager();
-        FragmentTransaction ft=fragmentManager.beginTransaction();
-        ft.replace(R.id.screen_area,fragment);
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction ft = fragmentManager.beginTransaction();
+        ft.replace(R.id.screen_area, fragment);
 
         ft.commit();
 
@@ -61,30 +60,51 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
+
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_settings)
+        {
             return true;
         }
+        switch (item.getItemId())
+        {
+            case R.id.action_search:
+                // search action
+                return true;
+            case R.id.action_add:
+                AddClientInfo();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
-        return super.onOptionsItemSelected(item);
+    /**
+     * Launching new activity
+     */
+    private void AddClientInfo()
+    {
+        Intent i = new Intent(MainActivity.this, AddClientInfo.class);
+        startActivity(i);
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
 
-        Fragment fragment=null;
+        Fragment fragment = null;
 
         int id = item.getItemId();
 
@@ -106,12 +126,11 @@ public class MainActivity extends AppCompatActivity
 
         }
 
-        if (fragment != null)
-        {
-            FragmentManager fragmentManager=getSupportFragmentManager();
-            FragmentTransaction ft=fragmentManager.beginTransaction();
+        if (fragment != null) {
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction ft = fragmentManager.beginTransaction();
 
-            ft.replace(R.id.screen_area,fragment);
+            ft.replace(R.id.screen_area, fragment);
 
             ft.commit();
         }
